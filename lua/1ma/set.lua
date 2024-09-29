@@ -36,8 +36,6 @@ vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
 
-vim.g.mapleader = " "
-
 -- In order to use chruby from the !sh shell, you need to change vim's shell:
 vim.o.shell = os.getenv("SHELL")
 
