@@ -1,1 +1,1 @@
-print("hello")
+require("1ma")
