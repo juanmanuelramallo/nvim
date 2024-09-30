@@ -38,3 +38,11 @@ vim.api.nvim_set_keymap('i', '<C-Down>', '<Esc>:m .+1<CR>==gi', { noremap = true
 vim.api.nvim_set_keymap('i', '<C-Up>', '<Esc>:m .-2<CR>==gi', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', '<C-Down>', ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', '<C-Up>', ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
+
+-- Window management
+vim.keymap.set("n", "<S-Left>", "<C-w>h")
+vim.keymap.set("n", "<S-Right>", "<C-w>l")
+vim.keymap.set("n", "<S-Up>", "<C-w>k")
+vim.keymap.set("n", "<S-Down>", "<C-w>j")
+vim.keymap.set("n", "<leader>wb", "<C-w>s<C-w>j")
+vim.keymap.set("n", "<leader>wr", "<C-w>v<C-w>l")

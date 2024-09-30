@@ -23,14 +23,27 @@ lsp_zero.extend_lspconfig({
 	capabilities = require('cmp_nvim_lsp').default_capabilities(),
 })
 
-require('mason').setup({})
-require('mason-lspconfig').setup({
-	-- Replace the language servers listed here
-	-- with the ones you want to install
-	ensure_installed = {'lua_ls', 'sqlls', 'ruby_lsp', 'stimulus_ls', 'ts_ls', 'html'},
-	handlers = {
-		function(server_name)
-			require('lspconfig')[server_name].setup({})
-		end,
-	}
+local handlers = {
+  -- The first entry (without a key) will be the default handler
+  -- and will be called for each installed server that doesn't have
+  -- a dedicated handler.
+  function (server_name) -- default handler (optional)
+    require("lspconfig")[server_name].setup {}
+  end,
+  -- Next, you can provide targeted overrides for specific servers.
+  ["ruby_lsp"] = function ()
+    local lspconfig = require("lspconfig")
+    lspconfig.ruby_lsp.setup {
+      init_options = {
+        formatter = 'none',
+        linters = {},
+      }
+    }
+  end,
+}
+
+require("mason").setup()
+require("mason-lspconfig").setup({
+  ensure_installed = { "ruby_lsp", "lua_ls", "sqlls", "stimulus_ls", "ts_ls", "html" },
+  handlers = handlers,
 })
