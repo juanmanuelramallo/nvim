@@ -11,8 +11,8 @@ vim.opt.expandtab = true
 -- Let's see what you got nvim
 vim.opt.smartindent = true
 
--- Line wrapping? nah
-vim.opt.wrap = false
+-- Line wrapping?
+vim.opt.wrap = true
 
 vim.opt.swapfile = false
 vim.opt.backup = false

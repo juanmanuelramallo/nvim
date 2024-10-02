@@ -44,6 +44,6 @@ local handlers = {
 
 require("mason").setup()
 require("mason-lspconfig").setup({
-  ensure_installed = { "ruby_lsp", "lua_ls", "sqlls", "stimulus_ls", "ts_ls", "html" },
+  ensure_installed = { "ruby_lsp", "lua_ls", "sqlls", "stimulus_ls", "ts_ls", "html", "tailwindcss" },
   handlers = handlers,
 })
