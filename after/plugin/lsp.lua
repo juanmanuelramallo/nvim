@@ -15,6 +15,7 @@ local lsp_attach = function(_, bufnr)
 	vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
 	vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
 	vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+  vim.keymap.set('n', 'of', '<cmd>lua vim.diagnostic.open_float()<cr>', opts)
 end
 
 lsp_zero.extend_lspconfig({
@@ -44,6 +45,6 @@ local handlers = {
 
 require("mason").setup()
 require("mason-lspconfig").setup({
-  ensure_installed = { "ruby_lsp", "lua_ls", "sqlls", "stimulus_ls", "ts_ls", "html", "tailwindcss" },
+  ensure_installed = { "ruby_lsp", "lua_ls", "sqlls", "ts_ls", "html", "tailwindcss" },
   handlers = handlers,
 })
