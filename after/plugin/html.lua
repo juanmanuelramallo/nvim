@@ -7,10 +7,11 @@ vim.keymap.set("n", "<leader><leader>fhtml", function()
     "-c",
     [[
 import sys
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, formatter
 html = sys.stdin.read()
+custom_formatter = formatter.HTMLFormatter(indent=2)
 soup = BeautifulSoup(html, 'html.parser')
-print(soup.prettify())
+print(soup.prettify(formatter=custom_formatter))
     ]]
   }, input)
 
