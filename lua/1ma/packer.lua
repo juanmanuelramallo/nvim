@@ -31,8 +31,8 @@ return require('packer').startup(function(use)
     use 'mattn/emmet-vim'
     use 'tpope/vim-commentary'
     use 'tpope/vim-surround'
-    use 'wakatime/vim-wakatime'
     use 'github/copilot.vim'
+    use 'nvim-tree/nvim-web-devicons'
     use {
       "nvim-neo-tree/neo-tree.nvim",
       branch = "v3.x",
