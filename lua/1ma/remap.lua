@@ -50,3 +50,6 @@ vim.keymap.set("i", "<C-Up>", "<C-w>k")
 vim.keymap.set("i", "<C-Down>", "<C-w>j")
 vim.keymap.set("n", "<leader>wb", "<C-w>s<C-w>j")
 vim.keymap.set("n", "<leader>wr", "<C-w>v<C-w>l")
+
+-- Esc to go to normal mode in terminal
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
