@@ -40,6 +40,10 @@ vim.api.nvim_set_keymap('v', '<C-Down>', ":m '>+1<CR>gv=gv", { noremap = true, s
 vim.api.nvim_set_keymap('v', '<C-Up>', ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
 
 -- Window management
+vim.keymap.set("n", "<S-h>", "<C-w>h")
+vim.keymap.set("n", "<S-l>", "<C-w>l")
+vim.keymap.set("n", "<S-k>", "<C-w>k")
+vim.keymap.set("n", "<S-j>", "<C-w>j")
 vim.keymap.set("n", "<S-Left>", "<C-w>h")
 vim.keymap.set("n", "<S-Right>", "<C-w>l")
 vim.keymap.set("n", "<S-Up>", "<C-w>k")
