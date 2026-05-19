@@ -25,6 +25,12 @@ vim.opt.undofile = true
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    vim.cmd("nohlsearch")
+  end,
+})
+
 vim.opt.termguicolors = true
 
 -- Leave some space at the bottom

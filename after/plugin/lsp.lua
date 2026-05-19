@@ -25,21 +25,35 @@ lsp_zero.extend_lspconfig({
 })
 
 local handlers = {
-  -- The first entry (without a key) will be the default handler
-  -- and will be called for each installed server that doesn't have
-  -- a dedicated handler.
-  function (server_name) -- default handler (optional)
-    require("lspconfig")[server_name].setup {}
+  function (server_name)
+    vim.lsp.enable(server_name)
   end,
-  -- Next, you can provide targeted overrides for specific servers.
   ["ruby_lsp"] = function ()
-    local lspconfig = require("lspconfig")
-    lspconfig.ruby_lsp.setup {
-      init_options = {
-        formatter = 'none',
-        linters = {},
+    vim.lsp.config.ruby_lsp = {
+      cmd = { 'ruby-lsp' },
+      filetypes = { 'ruby' },
+      root_markers = { 'Gemfile', '.git' },
+      settings = {
+        init_options = {
+          formatter = 'none',
+          linters = {},
+        }
       }
     }
+    vim.lsp.enable('ruby_lsp')
+  end,
+  ["sqlls"] = function ()
+    vim.lsp.config.sqlls = {
+      cmd = { 'sql-language-server', 'up', '--method', 'stdio' },
+      filetypes = { 'sql', 'mysql' },
+      root_markers = { '.git' },
+      settings = {
+        sqlls = {
+          upperCaseKeywords = false
+        }
+      }
+    }
+    vim.lsp.enable('sqlls')
   end,
 }
 
