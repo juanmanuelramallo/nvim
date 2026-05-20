@@ -42,6 +42,22 @@ require("lazy").setup({
       "nvim-tree/nvim-web-devicons",
       "MunifTanjim/nui.nvim",
     },
+    config = function()
+      require("neo-tree").setup({
+        event_handlers = {
+          {
+            event = "before_git_status",
+            handler = function(args)
+              for i, arg in ipairs(args.status_args) do
+                if arg:match("^%-%-ignored=") then
+                  args.status_args[i] = "--ignored=no"
+                end
+              end
+            end,
+          },
+        },
+      })
+    end,
   },
   { "vim-test/vim-test" },
   { "lewis6991/gitsigns.nvim" },
