@@ -2,6 +2,9 @@ local telescope = require("telescope")
 local builtin = require("telescope.builtin")
 local telescopeConfig = require("telescope.config")
 
+local find_files_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" }
+local find_files_with_ignored_command = { "rg", "--files", "--hidden", "--no-ignore-vcs", "--glob", "!**/.git/*" }
+
 -- Clone the default Telescope configuration
 local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) }
 
@@ -19,12 +22,15 @@ telescope.setup({
 	pickers = {
 		find_files = {
 			-- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
-			find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+			find_command = find_files_command,
 		},
 	},
 })
 
 vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
+vim.keymap.set('n', '<leader>fF', function()
+	builtin.find_files({ find_command = find_files_with_ignored_command })
+end, { desc = 'Telescope find files including gitignored' })
 vim.keymap.set('n', '<leader>fs', function()
 	builtin.grep_string({ search = vim.fn.input("Grep > ") })
 end, { desc = 'Telescope find files' })
